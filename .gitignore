@@ -1,0 +1,44 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+
+# Visual Studio
+.vs/
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Avalonia generated
+*.g.cs
+
+# NuGet
+packages/
+*.nupkg
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Publish output
+publish/
+
+# Temporary files
+tmp/
+temp/
+
+# Local settings
+appsettings.Development.json
