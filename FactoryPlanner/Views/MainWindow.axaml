@@ -1,0 +1,110 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="FactoryPlanner.Views.MainWindow"
+        x:CompileBindings="False"
+        Title="Factory Planner"
+        Width="1400"
+        Height="900"
+        MinWidth="1000"
+        MinHeight="650"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        >
+
+    <TabControl>
+
+        <TabItem Header="Items">
+            <Grid ColumnDefinitions="2*,*" Margin="10">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Button Content="Add" Command="{ReflectionBinding Items.AddCommand}" />
+                        <Button Content="Import" Command="{ReflectionBinding Items.ImportCommand}" />
+                        <Button Content="Export" Command="{ReflectionBinding Items.ExportCommand}" />
+                    </StackPanel>
+
+                    <TextBox Margin="0,10,0,10" Watermark="Search" Text="{ReflectionBinding Items.Search}" />
+                    <ListBox ItemsSource="{ReflectionBinding Items.View}" SelectedItem="{ReflectionBinding Items.Selected}" DisplayMemberBinding="{ReflectionBinding Name}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="10,0,0,0" DataContext="{ReflectionBinding Items.Selected}" Spacing="10">
+                    <TextBlock Text="Name" />
+                    <TextBox Text="{ReflectionBinding Name}" />
+
+                    <TextBlock Text="Category" />
+                    <TextBox Text="{ReflectionBinding Category}" />
+
+                    <TextBlock Text="Stack Size" />
+                    <NumericUpDown Value="{ReflectionBinding StackSize}" />
+
+                    <Button Content="Delete" Command="{ReflectionBinding $parent[Window].DataContext.Items.DeleteCommand}" />
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Recipes">
+            <Grid ColumnDefinitions="2*,*" Margin="10">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Button Content="Add" Command="{ReflectionBinding Recipes.AddCommand}" />
+                        <Button Content="Import" Command="{ReflectionBinding Recipes.ImportCommand}" />
+                        <Button Content="Export" Command="{ReflectionBinding Recipes.ExportCommand}" />
+                    </StackPanel>
+
+                    <TextBox Margin="0,10,0,10" Watermark="Search" Text="{ReflectionBinding Recipes.Search}" />
+                    <ListBox ItemsSource="{ReflectionBinding Recipes.View}" SelectedItem="{ReflectionBinding Recipes.Selected}" DisplayMemberBinding="{ReflectionBinding Name}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="10,0,0,0" DataContext="{ReflectionBinding Recipes.Selected}" Spacing="10">
+                    <TextBlock Text="Name" />
+                    <TextBox Text="{ReflectionBinding Name}" />
+
+                    <TextBlock Text="Output Item" />
+                    <TextBox Text="{ReflectionBinding OutputItem}" />
+
+                    <TextBlock Text="Output Per Minute" />
+                    <NumericUpDown Value="{ReflectionBinding OutputPerMin}" />
+
+                    <TextBlock Text="Machine" />
+                    <TextBox Text="{ReflectionBinding Machine}" />
+
+                    <Button Content="Delete" Command="{ReflectionBinding $parent[Window].DataContext.Recipes.DeleteCommand}" />
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Structures">
+            <Grid ColumnDefinitions="2*,*" Margin="10">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Button Content="Add" Command="{ReflectionBinding Structures.AddCommand}" />
+                        <Button Content="Import" Command="{ReflectionBinding Structures.ImportCommand}" />
+                        <Button Content="Export" Command="{ReflectionBinding Structures.ExportCommand}" />
+                    </StackPanel>
+
+                    <TextBox Margin="0,10,0,10" Watermark="Search" Text="{ReflectionBinding Structures.Search}" />
+                    <ListBox ItemsSource="{ReflectionBinding Structures.View}" SelectedItem="{ReflectionBinding Structures.Selected}" DisplayMemberBinding="{ReflectionBinding Name}" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Margin="10,0,0,0" DataContext="{ReflectionBinding Structures.Selected}" Spacing="10">
+                    <TextBlock Text="Name" />
+                    <TextBox Text="{ReflectionBinding Name}" />
+
+                    <TextBlock Text="Power" />
+                    <NumericUpDown Value="{ReflectionBinding PowerMw}" />
+
+                    <TextBlock Text="Width" />
+                    <NumericUpDown Value="{ReflectionBinding Width}" />
+
+                    <TextBlock Text="Length" />
+                    <NumericUpDown Value="{ReflectionBinding Length}" />
+
+                    <TextBlock Text="Tier" />
+                    <NumericUpDown Value="{ReflectionBinding Tier}" />
+
+                    <Button Content="Delete" Command="{ReflectionBinding $parent[Window].DataContext.Structures.DeleteCommand}" />
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+    </TabControl>
+</Window>
